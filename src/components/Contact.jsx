@@ -1,29 +1,55 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import ContactModal from "./ContactForm";
 
-export default function ContactForm() {
-  const [result, setResult] = useState("");
-
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    formData.append("access_key", "1efcf400-2b8c-4637-a7b1-60005ab95773");
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.json();
-    setResult(data.success ? "Success!" : "Error");
-  };
+export default function ContactSection() {
+  const [open, setOpen] = useState(false);
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" name="name" placeholder="Jean" required/>
-      <input type="email" name="email" placeholder="example@gmail.com" required/>
-      <textarea name="message" required></textarea>
-      <button type="submit">Submit</button>
-      <p>{result}</p>
-    </form>
+    <section id="contact" className="py-24 bg-white dark:bg-gray-950">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-extrabold mb-6">
+          Me contacter
+        </h2>
+
+        <p className="text-gray-600 dark:text-gray-400 mb-10">
+          Retrouvez-moi ou envoyez-moi un message directement
+        </p>
+
+        {/* Icônes */}
+        <div className="flex justify-center gap-8 mb-10">
+          <a
+            href="https://github.com/powksy94"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:scale-110 transition"
+          >
+            <Github className="w-8 h-8 text-gray-700 dark:text-gray-300" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/matthieu-uzan-7b4078279/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:scale-110 transition"
+          >
+            <Linkedin className="w-8 h-8 text-blue-600" />
+          </a>
+            {/* Bouton */}
+        <button
+          onClick={() => setOpen(true)}
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
+        >
+          <Mail size={16} />
+          Envoyer un message
+        </button>
+      </div>
+        </div>
+
+      
+
+      {/* Popup */}
+      {open && <ContactModal onClose={() => setOpen(false)} />}
+    </section>
   );
 }
