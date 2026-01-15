@@ -276,3 +276,72 @@ progress::-moz-progress-bar {
 .progress-high::-moz-progress-bar {
   background: linear-gradient(to right, #34d399, #16a34a);
 }
+
+.contact-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 26px;
+  background: linear-gradient(135deg, #181b4c, #7c2abe, #2c5364d8);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 12px 35px rgba(0, 30, 60, 0.45);
+}
+
+.contact-input,
+.contact-textarea {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  outline: none;
+  background: rgba(38, 37, 79, 0.749);
+  color: #3f87ad;
+  transition: all 0.3s ease;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: #64748b;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+}
+
+.contact-textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+button.contact-button {
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button.contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+}
+
+button.contact-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+}
+
+.contact-result {
+  text-align: center;
+  font-size: 14px;
+  color: #38bdf8;
+}

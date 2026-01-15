@@ -49,7 +49,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          < Contact />
+          <Contact />
         </motion.div>
       </Section>
     </main>
