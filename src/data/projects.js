@@ -91,7 +91,6 @@ export const projects = [
       { name: "Flutter", value: 63.2 },
       { name: "others languages", value: 22.7 },
       { name: "Internal package", value: 14.1 },
-
     ],
 
     content: [
@@ -112,7 +111,8 @@ export const projects = [
   {
     slug: "aliceinborderland-train-game",
     title: "Jeu console - AliceinBorderland Train Game",
-    description: "Jeu console inspiré de l’univers d’Alice in Borderland basé sur la gestion d’un train",
+    description:
+      "Jeu console inspiré de l’univers d’Alice in Borderland basé sur la gestion d’un train",
     tech: "C#, programmation orientée objet, algorithmes",
     externalLink: "https://github.com/powksy94/AliceinBorderlandTrainGame",
     languages: [{ name: "C#", value: 100 }],
@@ -145,24 +145,31 @@ export const projects = [
       "Gestion des erreurs et réponses API claires pour intégration front-end",
     ],
   },
-
   {
     slug: "anecdote-app",
-    title: "Anecdote App",
-    description: "Application web pour soumettre, lire et voter des anecdotes",
-    tech: "React, JavaScript, CSS",
+    title: "Anecdote Mobile App",
+    description:
+      "Application mobile permettant de consulter, ajouter et partager des anecdotes",
+    tech: "Flutter, Kotlin, C++, Other languages",
     externalLink: "https://github.com/powksy94/anecdote_app",
     languages: [
-      { name: "JavaScript", value: 70 },
-      { name: "CSS", value: 20 },
-      { name: "HTML", value: 10 },
+      { name: "Flutter", value: 63.2 },
+      { name: "others languages", value: 22.7 },
+      { name: "Internal package", value: 14.1 },
     ],
     content: [
-      "Développement d’une application React pour afficher des anecdotes",
-      "Intégration de fonctionnalités pour ajouter, filtrer et voter des anecdotes",
-      "Gestion de l’état avec hooks React (useState, useEffect)",
-      "Interface utilisateur réactive et intuitive",
-      "Animations simples pour l’amélioration de l’expérience utilisateur",
+      "Développement d’une application mobile multiplateforme",
+      "Architecture similaire à Password Mobile App pour la gestion des écrans et de la logique",
+      "Ajout de fonctionnalités :",
+      {
+        type: "list",
+        items: [
+          "Affichage dynamique d’anecdotes",
+          "Ajout de nouvelles anecdotes via formulaire",
+          "Navigation fluide entre les sections de l’application",
+          "Interface mobile pensée pour une utilisation simple et rapide",
+        ],
+      },
     ],
   },
 ];
