@@ -21,7 +21,7 @@ export default function LanguagePieChart({ data }) {
         <PieChart>
           <Pie
             data={data}
-            dataKey="value"
+            dataKey="percent"
             nameKey="name"
             cx="50%"
             cy="50%"
@@ -35,7 +35,7 @@ export default function LanguagePieChart({ data }) {
               />
             ))}
           </Pie>
-          <Tooltip formatter={(value) => `${value}%`} />
+          <Tooltip formatter={(percent) => `${percent}%`} />
         </PieChart>
       </ResponsiveContainer>
     </div>

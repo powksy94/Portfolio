@@ -2,54 +2,59 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ProjectBadge } from "./ProjectBadge";
 
-export default function ProjectCard({
-  slug,
-  title,
-  description,
-  tech,
-  languages,
-}) {
+export default function ProjectCard({ slug, title, description, tech }) {
+  const techList = (tech || "")
+    .split(",")
+    .map((t) => t.trim())
+    .filter(Boolean);
+
   return (
     <motion.article
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 300 }}
-      className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800
-                 rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+      whileHover={{ y: -6, scale: 1.01 }}
+      transition={{ type: "spring", stiffness: 260, damping: 18 }}
+      className="
+        group relative overflow-hidden
+        flex flex-col
+        rounded-3xl p-7
+        bg-white/70 dark:bg-white/10
+        shadow-2xl
+        backdrop-blur-xl
+        transition
+      "
     >
-      {/* Header */}
       <div className="flex flex-col gap-3">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+        <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">
           {title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-400">{description}</p>
+        <p className="text-slate-600 dark:text-slate-300">
+          {description}
+        </p>
       </div>
 
-      {/* Technologies / Langages */}
-      <div className="flex flex-col gap-2 mt-4">
-        {Array.isArray(languages) && languages.length > 0
-          ? languages.map((lang, i) => (
-              <ProjectBadge
-                key={`${slug}-${lang.name}${i}`}
-                name={lang.name}
-                value={lang.value}
-              />
-            ))
-          : tech
-              ?.split(",")
-              .map((t) => t.trim())
-              .filter(Boolean)
-              .map((t, i) => (
-                <ProjectBadge key={`${slug}-tech-${t}-${i}`} name={t} />
-              ))}
+      {/* Badges tech */}
+      <div className="flex flex-wrap items-start gap-2 mt-5 min-h-16">
+        {techList.slice(0, 6).map((t, i) => (
+          <ProjectBadge key={`${slug}-tech-${t}-${i}`} name={t} />
+        ))}
+        {techList.length > 6 && (
+          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-black/5 dark:bg-white/10 text-slate-700 dark:text-slate-200">
+            +{techList.length - 6}
+          </span>
+        )}
       </div>
-      {/* CTA */}
-      <div className="mt-6 flex justify-end">
+
+      <div className="mt-auto pt-7 flex justify-end">
         <Link
           to={`/projects/${slug}`}
-          className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium group-hover:underline"
+          className="
+            inline-flex items-center gap-2
+            px-4 py-2 rounded-xl
+            bg-blue-600 text-white
+            hover:bg-blue-700
+            transition
+          "
         >
-          Voir le projet
-          <span className="transition group-hover:translate-x-1">→</span>
+          Voir le projet <span className="transition group-hover:translate-x-1">→</span>
         </Link>
       </div>
     </motion.article>

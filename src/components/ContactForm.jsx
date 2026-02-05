@@ -21,29 +21,35 @@ export default function ContactForm() {
     }
   };
 
+  const inputClass =
+    "w-full px-4 py-3 rounded-xl " +
+    "bg-white dark:bg-white/10 " +
+    "border border-gray-200 dark:border-white/10 " +
+    "text-gray-800 dark:text-gray-100 " +
+    "placeholder-gray-400 dark:placeholder-gray-500 " +
+    "focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 " +
+    "transition";
+
   return (
-    <form
-      className="contact-form flex flex-col gap-4 max-h-[70vh] overflow-y-auto"
-      onSubmit={onSubmit}
-    >
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       <input
-        className="contact-input p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className={inputClass}
         type="text"
         name="name"
-        placeholder="Jean"
+        placeholder="Nom"
         required
       />
 
       <input
-        className="contact-input p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className={inputClass}
         type="email"
         name="email"
-        placeholder="example@gmail.com"
+        placeholder="Email"
         required
       />
 
       <textarea
-        className="contact-textarea p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className={`${inputClass} min-h-28 resize-none`}
         name="message"
         placeholder="Votre message"
         required
@@ -51,12 +57,12 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="px-6 py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-purple-700 via-purple-500 to-indigo-500 hover:scale-105 transition"
+        className="w-full px-6 py-3 rounded-xl text-white font-semibold bg-linear-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-md shadow-blue-500/20 hover:scale-105 active:scale-95 transition"
       >
         Envoyer
       </button>
 
-      {result && <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">{result}</p>}
+      {result && <p className="text-sm text-center text-blue-600 dark:text-cyan-400 mt-1">{result}</p>}
     </form>
   );
 }

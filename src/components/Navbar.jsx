@@ -1,140 +1,114 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  const location = useLocation(); // pour détecter la page actuelle
+  const links = [
+    { path: "/", label: "Accueil" },
+    { path: "/about", label: "À propos" },
+    { path: "/projects", label: "Projets" },
+    { path: "/contact", label: "Contact" },
+  ];
 
-  // Shadow navbar au scroll
+  // ✅ Si on passe en desktop (>= md), on ferme le menu mobile
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onResize = () => {
+      if (window.innerWidth >= 768) setOpen(false);
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const scrollToSection = (id) => {
-    if (location.pathname !== "/") return; // scroll uniquement sur la page d'accueil
-    const section = document.getElementById(id);
-    if (!section) return;
-    section.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleToggle = () => {
-    if (!open && location.pathname === "/") scrollToSection("home");
-    setOpen(!open);
-  };
-
   return (
-    <header className="relative z-50">
-      <nav
-        className={`fixed w-full top-0 transition-all duration-300 ${
-          scrolled
-            ? "shadow-md bg-white dark:bg-gray-900"
-            : "bg-white/90 dark:bg-gray-900/90"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Logo / Accueil */}
-          {location.pathname === "/" ? (
-            <button onClick={() => scrollToSection("home")} className="font-bold text-xl">
-              Accueil
-            </button>
-          ) : (
-            <Link to="/" className="font-bold text-xl">
-              Accueil
-            </Link>
-          )}
+    <header className="sticky top-0 z-[9999] w-full">
+      {/* Background glass */}
+      <div className="w-full py-3 backdrop-blur-xl bg-white/20 dark:bg-black/20">
+        <nav className="max-w-5xl mx-auto px-4">
+          {/* Capsule */}
+          <div className="rounded-[30px] bg-white/70 dark:bg-white/10 shadow-2xl px-4 sm:px-6 py-3 flex items-center gap-4">
+            {/* ✅ DESKTOP (>= md) : liens horizontaux centrés */}
+            <ul className="hidden md:flex flex-1 items-center justify-center gap-4 lg:gap-8 list-none m-0 p-0">
+              {links.map((link) => (
+                <li key={link.path} className="m-0 p-0">
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `inline-flex items-center px-4 lg:px-6 py-2 rounded-xl font-semibold text-sm transition whitespace-nowrap ${
+                        isActive
+                          ? "bg-white/90 dark:bg-white/20 text-black dark:text-white shadow-md"
+                          : "text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
 
-          {/* Liens desktop */}
-          <div className="hidden md:flex items-center gap-6">
-            {location.pathname === "/" ? (
-              <>
-                <button onClick={() => scrollToSection("about")} className="hover:text-blue-500 transition">
-                  À propos
-                </button>
-                <button onClick={() => scrollToSection("projects")} className="hover:text-blue-500 transition">
-                  Projets
-                </button>
-                <button onClick={() => scrollToSection("contact")} className="hover:text-blue-500 transition">
-                  Contact
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/#about" className="hover:text-blue-500 transition">
-                  À propos
-                </Link>
-                <Link to="/#projects" className="hover:text-blue-500 transition">
-                  Projets
-                </Link>
-                <Link to="/#contact" className="hover:text-blue-500 transition">
-                  Contact
-                </Link>
-              </>
-            )}
-            <ThemeToggle />
+            {/* ✅ Droite : toggle TOUJOURS visible + burger uniquement mobile */}
+            <div className="flex items-center gap-3 ml-auto">
+              <ThemeToggle />
+
+              {/* ✅ Burger UNIQUEMENT mobile (< md) */}
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                className="md:hidden inline-flex items-center justify-center text-xl w-11 h-11 rounded-xl bg-white/40 dark:bg-white/10"
+                aria-label="Ouvrir le menu"
+                aria-expanded={open}
+              >
+                {open ? "✖️" : "☰"}
+              </button>
+            </div>
           </div>
+        </nav>
+      </div>
 
-          {/* Hamburger mobile */}
-          <button
-            className="md:hidden p-2 rounded-md text-xl z-50 relative"
-            onClick={handleToggle}
-            aria-label="Toggle menu"
-          >
-            {open ? "✖️" : "☰"}
-          </button>
-        </div>
-      </nav>
-
-      {/* Menu mobile */}
+      {/* ✅ Menu mobile (< md) */}
       <AnimatePresence>
         {open && (
           <motion.div
-            key="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-gray-900 shadow-lg"
+            className="md:hidden fixed inset-0 z-[9998]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <div className="flex flex-col items-center gap-4 px-6 py-4">
-              {location.pathname === "/" ? (
-                <>
-                  <button onClick={() => { scrollToSection("home"); setOpen(false); }} className="hover:text-blue-500 transition">
-                    Accueil
-                  </button>
-                  <button onClick={() => { scrollToSection("about"); setOpen(false); }} className="hover:text-blue-500 transition">
-                    À propos
-                  </button>
-                  <button onClick={() => { scrollToSection("projects"); setOpen(false); }} className="hover:text-blue-500 transition">
-                    Projets
-                  </button>
-                  <button onClick={() => { scrollToSection("contact"); setOpen(false); }} className="hover:text-blue-500 transition">
-                    Contact
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link to="/" onClick={() => setOpen(false)} className="hover:text-blue-500 transition">
-                    Accueil
-                  </Link>
-                  <Link to="/#about" onClick={() => setOpen(false)} className="hover:text-blue-500 transition">
-                    À propos
-                  </Link>
-                  <Link to="/#projects" onClick={() => setOpen(false)} className="hover:text-blue-500 transition">
-                    Projets
-                  </Link>
-                  <Link to="/#contact" onClick={() => setOpen(false)} className="hover:text-blue-500 transition">
-                    Contact
-                  </Link>
-                </>
-              )}
-              <ThemeToggle />
-            </div>
+            <div
+              className="absolute inset-0 bg-black/30"
+              onClick={() => setOpen(false)}
+            />
+
+            <motion.div
+              initial={{ y: -16, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -16, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="absolute top-[72px] left-4 right-4 rounded-2xl bg-white/85 dark:bg-gray-900/75 backdrop-blur-xl shadow-2xl p-4"
+            >
+              <ul className="flex flex-col gap-2 list-none m-0 p-0">
+                {links.map((link) => (
+                  <li key={link.path}>
+                    <NavLink
+                      to={link.path}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `block px-4 py-3 rounded-xl font-semibold transition ${
+                          isActive
+                            ? "bg-black/5 dark:bg-white/10 text-black dark:text-white"
+                            : "text-black/70 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/10"
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

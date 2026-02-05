@@ -1,51 +1,98 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* =========================================================
    🌍 BASE GLOBALE
 ========================================================= */
+@keyframes drift {
+  0%   { background-position: 0% 0%, 100% 100%, 0% 100%, 0 0; }
+  50%  { background-position: 15% 10%, 85% 90%, 10% 85%, 0 0; }
+  100% { background-position: 0% 0%, 100% 100%, 0% 100%, 0 0; }
+}
 
+html,
 body {
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+  padding: 0;
+  background: transparent;
+}
 
-  background-color: #f9fafb; /* gray-50 */
-  color: #1f2937; /* gray-800 */
-
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* ✅ Texte global lisible */
+body {
+  color: #0f172a; /* slate-900 */
 }
 
 .dark body {
-  background-color: #111827; /* gray-900 */
-  color: #f9fafb; /* gray-50 */
+  color: #ffffff;
+}
+
+/* =========================================================
+   🎨 BACKGROUND PREMIUM CYAN
+========================================================= */
+
+.bg-animated-premium {
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(34, 211, 238, 0.25), transparent 70%),
+    radial-gradient(800px 500px at 85% 85%, rgba(59, 130, 246, 0.20), transparent 70%),
+    radial-gradient(700px 450px at 10% 85%, rgba(14, 165, 233, 0.15), transparent 70%),
+    linear-gradient(to bottom, #f8fafc, #f0f9ff);
+
+  background-repeat: no-repeat;
+  background-size: auto, auto, auto, cover;
+  animation: drift 18s ease-in-out infinite;
+}
+
+.dark .bg-animated-premium {
+  background:
+    radial-gradient(1000px 520px at 15% 10%, rgba(34, 211, 238, 0.25), transparent 75%),
+    radial-gradient(900px 520px at 85% 85%, rgba(59, 130, 246, 0.20), transparent 75%),
+    radial-gradient(800px 520px at 10% 85%, rgba(14, 165, 233, 0.15), transparent 75%),
+    linear-gradient(to bottom, #020617, #0f172a);
+
+  background-repeat: no-repeat;
+  background-size: auto, auto, auto, cover;
+  animation: drift 20s ease-in-out infinite;
+}
+
+/* ✅ Overlay pour lisibilité (indispensable) */
+.bg-animated-premium::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .bg-animated-premium::before {
+  background: rgba(0, 0, 0, 0.35);
 }
 
 /* =========================================================
    🔗 LIENS
 ========================================================= */
 
-a {
-  font-weight: 500;
-  text-decoration: none;
-  color: #2563eb; /* blue-600 */
-  transition: color 0.25s ease;
-}
+@layer base {
+  a {
+    font-weight: 500;
+    text-decoration: none;
+    color: #2563eb; /* blue-600 */
+    transition: color 0.25s ease;
+  }
 
-a:hover {
-  color: #1d4ed8; /* blue-700 */
-}
+  a:hover {
+    color: #1d4ed8; /* blue-700 */
+  }
 
-/* Focus propre (évite le cadre bleu moche) */
-a:focus {
-  outline: none;
-}
+  a:focus {
+    outline: none;
+  }
 
-a:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 3px;
+  a:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 3px;
+  }
 }
 
 /* =========================================================
@@ -65,26 +112,33 @@ p {
    🔘 BOUTONS NATIFS
 ========================================================= */
 
-button {
-  border-radius: 0.5rem;
-  border: 1px solid transparent;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
+@layer base {
+  button {
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
 
-  background-color: #1f2937; /* gray-800 */
-  color: #ffffff;
+    background-color: #f3f4f6; /* gray-100 */
+    color: #1f2937; /* gray-800 */
 
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
 
-button:hover {
-  background-color: #374151; /* gray-700 */
-}
+  button:hover {
+    background-color: #e5e7eb; /* gray-200 */
+  }
 
-.dark button:hover {
-  background-color: #2563eb; /* blue-600 */
+  .dark button {
+    background-color: #1f2937; /* gray-800 */
+    color: #ffffff;
+  }
+
+  .dark button:hover {
+    background-color: #2563eb; /* blue-600 */
+  }
 }
 
 /* =========================================================
@@ -106,10 +160,9 @@ button:hover {
 
 .btn-primary:hover {
   background-color: #1d4ed8;
-  color: #ffffff; /* 🔥 OBLIGATOIRE */
+  color: #ffffff;
 }
 
-/* Bouton secondaire */
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -134,72 +187,7 @@ button:hover {
 }
 
 /* =========================================================
-   🃏 CARDS
-========================================================= */
-
-.card {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-}
-
-.dark .card {
-  background-color: #1f2937; /* gray-800 */
-}
-
-/* =========================================================
-   📏 SECTIONS (AÉRATION)
-========================================================= */
-
-section {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  scroll-margin-top: 7rem;
-}
-
-/* Si section vide → pas d’effet bloc */
-section:empty {
-  padding: 0;
-}
-
-/* =========================================================
-   📦 CONTAINER
-========================================================= */
-
-.container {
-  max-width: 80rem; /* ~7xl */
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-/* =========================================================
-   ✨ ANIMATIONS
-========================================================= */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  animation: fadeIn 0.6s ease forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =========================================================
-   🧼 SCROLLBAR (OPTIONNEL)
+   🧼 SCROLLBAR
 ========================================================= */
 
 ::-webkit-scrollbar {
@@ -207,12 +195,12 @@ section:empty {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #9ca3af; /* gray-400 */
+  background-color: #9ca3af;
   border-radius: 999px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background-color: #4b5563; /* gray-600 */
+  background-color: #4b5563;
 }
 
 /* =========================================================
@@ -228,28 +216,16 @@ progress {
   overflow: hidden;
 }
 
-/* Fond */
 progress::-webkit-progress-bar {
-  background-color: #e5e7eb; /* gray-200 */
+  background-color: #e5e7eb;
   border-radius: 999px;
 }
 
-progress::-moz-progress-bar {
-  border-radius: 999px;
-}
-
-/* Dark mode */
 .dark progress::-webkit-progress-bar {
-  background-color: #4b5563; /* gray-600 */
-}
-.dark progress::-moz-progress-bar {
   background-color: #4b5563;
 }
 
-/* =======================
-   NIVEAU FAIBLE (ROUGE)
-======================= */
-
+/* ✅ FIX : c'est progress-value (pas progress-percent) */
 .progress-low::-webkit-progress-value {
   background: linear-gradient(to right, #f87171, #dc2626);
 }
@@ -257,9 +233,6 @@ progress::-moz-progress-bar {
   background: linear-gradient(to right, #f87171, #dc2626);
 }
 
-/* =======================
-   NIVEAU MOYEN (JAUNE)
-======================= */
 .progress-medium::-webkit-progress-value {
   background: linear-gradient(to right, #facc15, #eab308);
 }
@@ -267,9 +240,6 @@ progress::-moz-progress-bar {
   background: linear-gradient(to right, #facc15, #eab308);
 }
 
-/* =======================
-   NIVEAU ÉLEVÉ (VERT)
-======================= */
 .progress-high::-webkit-progress-value {
   background: linear-gradient(to right, #34d399, #16a34a);
 }
@@ -277,71 +247,3 @@ progress::-moz-progress-bar {
   background: linear-gradient(to right, #34d399, #16a34a);
 }
 
-.contact-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 26px;
-  background: linear-gradient(135deg, #181b4c, #7c2abe, #2c5364d8);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  box-shadow: 0 12px 35px rgba(0, 30, 60, 0.45);
-}
-
-.contact-input,
-.contact-textarea {
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  font-size: 14px;
-  outline: none;
-  background: rgba(38, 37, 79, 0.749);
-  color: #3f87ad;
-  transition: all 0.3s ease;
-}
-
-.contact-input::placeholder,
-.contact-textarea::placeholder {
-  color: #64748b;
-}
-
-.contact-input:focus,
-.contact-textarea:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
-}
-
-.contact-textarea {
-  min-height: 120px;
-  resize: none;
-}
-
-button.contact-button {
-  padding: 15px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #2563eb, #38bdf8);
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-button.contact-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
-}
-
-button.contact-button:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
-}
-
-.contact-result {
-  text-align: center;
-  font-size: 14px;
-  color: #38bdf8;
-}

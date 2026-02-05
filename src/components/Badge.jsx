@@ -1,13 +1,13 @@
 import { skillIcons } from "../utils/skillIcons";
 
-export default function Badge({ name, level }) {
+export default function Badge({ name, percent }) {
   // Récupération de l’icône selon le langage ou framework
   const Icon = skillIcons[name];
 
   // Classe couleur selon le niveau
-  const getLevelClass = () => {
-    if (level < 40) return "progress-low";
-    if (level < 60) return "progress-medium";
+  const getpercentClass = () => {
+    if (percent < 40) return "progress-low";
+    if (percent < 60) return "progress-medium";
     return "progress-high";
   };
 
@@ -25,15 +25,15 @@ export default function Badge({ name, level }) {
         </div>
 
         <span className="font-semibold text-gray-800 dark:text-gray-200">
-          {level}%
+          {percent}%
         </span>
       </div>
 
       {/* Progress bar */}
       <progress
-        value={level}
+        value={percent}
         max={100}
-        className={`skill-progress w-full h-5 rounded-full appearance-none ${getLevelClass()}`}
+        className={`skill-progress w-full h-5 rounded-full appearance-none ${getpercentClass()}`}
       />
     </div>
   );

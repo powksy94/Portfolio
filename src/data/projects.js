@@ -5,7 +5,7 @@ export const projects = [
     description: "Création d'un bot dédié à un serveur Discord",
     tech: "Node.js, JavaScript, Discord API",
     externalLink: "https://github.com/powksy94/bot_discord",
-    languages: [{ name: "JavaScript", value: 100 }],
+    languages: [{ name: "JavaScript", percent: 100 }],
     content: [
       "Liaison entre le code et l'API Discord via Node.js",
       "Codé en JavaScript avec appel de fichiers au format JSON",
@@ -27,7 +27,7 @@ export const projects = [
     description: "Création d'un jeu basé sur un manga en console",
     tech: "C#, programmation orientée objet, algorithmes",
     externalLink: "https://github.com/powksy94/Alice_in_Bordeland_Games",
-    languages: [{ name: "C#", value: 100 }],
+    languages: [{ name: "C#", percent: 100 }],
     content: [
       "Structure de classes en C#",
       "Boucles (for, foreach, while) pour les tours et la continuité du jeu",
@@ -42,11 +42,11 @@ export const projects = [
     tech: "HTML, CSS, JavaScript, Python, Flask",
     externalLink: "https://github.com/powksy94/site",
     languages: [
-      { name: "HTML", value: 36.8 },
-      { name: "Python", value: 36.5 },
-      { name: "CSS", value: 19.6 },
-      { name: "JavaScript", value: 6.4 },
-      { name: "Internal package", value: 0.7 },
+      { name: "HTML", percent: 36.8 },
+      { name: "Python", percent: 36.5 },
+      { name: "CSS", percent: 19.6 },
+      { name: "JavaScript", percent: 6.4 },
+      { name: "Internal package", percent: 0.7 },
     ],
     content: [
       "Accès aux logs avec rôle admin sécurisé",
@@ -63,8 +63,8 @@ export const projects = [
     tech: "Python",
     externalLink: "https://github.com/powksy94/-hashcompare",
     languages: [
-      { name: "Python", value: 99 },
-      { name: "Internal package", value: 1 },
+      { name: "Python", percent: 99 },
+      { name: "Internal package", percent: 1 },
     ],
     content: [
       "Création d’un outil permettant de comparer des fichiers via leur empreinte hash",
@@ -88,13 +88,13 @@ export const projects = [
     tech: "Flutter, Kotlin, C++, Other languages",
     externalLink: "https://github.com/powksy94/PasswordMobileApp",
     languages: [
-      { name: "Flutter", value: 63.2 },
-      { name: "others languages", value: 22.7 },
-      { name: "Internal package", value: 14.1 },
+      { name: "Flutter", percent: 63.2 },
+      { name: "others languages", percent: 22.7 },
+      { name: "Internal package", percent: 14.1 },
     ],
 
     content: [
-      "Développement d'une application mobile multiplateforme avec React Native",
+      "Développement d'une application mobile multiplateforme avec Flutter",
       "Stockage sécurisé des mots de passe avec Firebase Authentication et Firestore",
       "Ajout de fonctionnalités :",
       {
@@ -115,7 +115,7 @@ export const projects = [
       "Jeu console inspiré de l’univers d’Alice in Borderland basé sur la gestion d’un train",
     tech: "C#, programmation orientée objet, algorithmes",
     externalLink: "https://github.com/powksy94/AliceinBorderlandTrainGame",
-    languages: [{ name: "C#", value: 100 }],
+    languages: [{ name: "C#", percent: 100 }],
     content: [
       "Conception d’un jeu console en C# focalisé sur la gestion et la survie dans un train",
       "Architecture de classes pour gérer les éléments du jeu (joueur, train, obstacles)",
@@ -132,10 +132,10 @@ export const projects = [
     tech: "Node.js, Express, MongoDB, JavaScript",
     externalLink: "https://github.com/powksy94/passwordmobileapp_backend",
     languages: [
-      { name: "JavaScript", value: 85 },
-      { name: "HTML", value: 5 },
-      { name: "CSS", value: 5 },
-      { name: "Internal package", value: 5 },
+      { name: "JavaScript", percent: 85 },
+      { name: "HTML", percent: 5 },
+      { name: "CSS", percent: 5 },
+      { name: "Internal package", percent: 5 },
     ],
     content: [
       "Création d’un backend Express.js pour gérer les utilisateurs et les mots de passe",
@@ -153,9 +153,9 @@ export const projects = [
     tech: "Flutter, Kotlin, C++, Other languages",
     externalLink: "https://github.com/powksy94/anecdote_app",
     languages: [
-      { name: "Flutter", value: 63.2 },
-      { name: "others languages", value: 22.7 },
-      { name: "Internal package", value: 14.1 },
+      { name: "Flutter", percent: 63.2 },
+      { name: "others languages", percent: 22.7 },
+      { name: "Internal package", percent: 14.1 },
     ],
     content: [
       "Développement d’une application mobile multiplateforme",
