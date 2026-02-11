@@ -172,4 +172,50 @@ export const projects = [
       },
     ],
   },
+  {
+    slug: "bdd-python-game",
+    title: "Jeu RPG Python avec MongoDB",
+    description:
+      "Jeu de combat RPG en console avec persistance des données via MongoDB",
+    tech: "Python, MongoDB",
+    externalLink: "https://github.com/powksy94/BDD_python_game",
+    languages: [{ name: "Python", percent: 100 }],
+    content: [
+      "Développement d'un jeu RPG en console avec Python et base de données MongoDB",
+      "Architecture modulaire avec séparation des modèles, utilitaires et logique de jeu",
+      "Fonctionnalités principales :",
+      {
+        type: "list",
+        items: [
+          "Création d'équipe de 3 personnages parmi 10 classes (Guerrier, Mage, Archer, Paladin…)",
+          "Système de combat tour par tour contre des monstres générés aléatoirement",
+          "Statistiques complètes par personnage (attaque, défense, PV, atout, ultime)",
+          "Classement des joueurs persisté en base de données MongoDB",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "cobol-test-transaction",
+    title: "Gestion de Transactions COBOL",
+    description:
+      "Programme COBOL de gestion de transactions financières en console",
+    tech: "COBOL",
+    externalLink: "https://github.com/powksy94/Cobol_test_transaction",
+    languages: [{ name: "COBOL", percent: 100 }],
+    content: [
+      "Développement d'un système de gestion de transactions financières en COBOL",
+      "Interface console avec menu interactif pour la navigation",
+      "Fonctionnalités principales :",
+      {
+        type: "list",
+        items: [
+          "Saisie de transactions avec validation des champs (date, type, montant, compte)",
+          "Gestion des types CREDIT et DEBIT avec calcul automatique du solde",
+          "Stockage des transactions dans un fichier séquentiel (transaction.dat)",
+          "Affichage des totaux et listing complet des transactions enregistrées",
+        ],
+      },
+    ],
+  },
 ];
