@@ -17,7 +17,7 @@ export default function ProjectDetail() {
 
   return (
     <PageWrapper>
-      <header className="bg-white/70 dark:bg-white/10 backdrop-blur-xl py-20">
+      <header className="bg-white/50 dark:bg-white/10 backdrop-blur-xl border-b border-blue-100/30 dark:border-transparent py-20">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h1
             initial={{ opacity: 0, y: -16 }}
@@ -32,7 +32,7 @@ export default function ProjectDetail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15 }}
-            className="mt-6 text-lg text-gray-700 dark:text-gray-300"
+            className="mt-6 text-lg text-slate-600 dark:text-gray-300"
           >
             {project.description}
           </motion.p>
@@ -112,7 +112,7 @@ export default function ProjectDetail() {
 
           {/* Camembert (inchangé) */}
           {project.languages && (
-            <div className="mt-10 bg-white/60 dark:bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-8">
+            <div className="mt-10 bg-white/50 dark:bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-100/30 dark:border-transparent p-8">
               <h3 className="text-xl font-bold mb-6 text-center text-slate-900 dark:text-white">
                 Répartition des technologies
               </h3>

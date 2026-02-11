@@ -18,12 +18,12 @@ export default function Contact() {
   return (
     <section id="contact" className="py-28 text-center">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="rounded-3xl bg-white/80 dark:bg-black/40 backdrop-blur-xl shadow-xl p-10">
+        <div className="rounded-3xl bg-white/50 dark:bg-black/40 backdrop-blur-xl shadow-xl border border-blue-100/40 dark:border-transparent p-10">
           {/* Titre */}
           <h2 className="text-4xl font-extrabold mb-6 text-slate-900 dark:text-white">Me contacter</h2>
 
           {/* Description */}
-          <p className="text-gray-600 dark:text-gray-400 mb-14">
+          <p className="text-slate-500 dark:text-gray-400 mb-14">
             Retrouvez-moi ou envoyez-moi un message directement
           </p>
 
@@ -34,9 +34,9 @@ export default function Contact() {
                 href="https://github.com/powksy94"
                 target="_blank"
                 rel="noreferrer"
-                className="p-4 rounded-full bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition hover:scale-110"
+                className="p-4 rounded-full bg-slate-100 dark:bg-white/5 hover:bg-blue-100 dark:hover:bg-white/10 transition hover:scale-110"
               >
-                <Github className="w-7 h-7 text-gray-700 dark:text-gray-300" />
+                <Github className="w-7 h-7 text-slate-700 dark:text-gray-300" />
               </a>
 
               <a

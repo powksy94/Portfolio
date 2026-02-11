@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="w-full py-3 backdrop-blur-xl bg-white/20 dark:bg-black/20">
         <nav className="max-w-5xl mx-auto px-4">
           {/* Capsule */}
-          <div className="rounded-[30px] bg-white/70 dark:bg-white/10 shadow-2xl px-4 sm:px-6 py-3 flex items-center gap-4">
+          <div className="rounded-[30px] bg-white/50 dark:bg-white/10 shadow-2xl border border-blue-100/30 dark:border-transparent px-4 sm:px-6 py-3 flex items-center gap-4">
             {/* ✅ DESKTOP (>= md) : liens horizontaux centrés */}
             <ul className="hidden md:flex flex-1 items-center justify-center gap-4 lg:gap-8 list-none m-0 p-0">
               {links.map((link) => (
@@ -38,7 +38,7 @@ export default function Navbar() {
                     className={({ isActive }) =>
                       `inline-flex items-center px-4 lg:px-6 py-2 rounded-xl font-semibold text-sm transition whitespace-nowrap ${
                         isActive
-                          ? "bg-white/90 dark:bg-white/20 text-black dark:text-white shadow-md"
+                          ? "bg-blue-50/90 dark:bg-white/20 text-blue-900 dark:text-white shadow-md"
                           : "text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
                       }`
                     }
@@ -57,7 +57,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
-                className="md:hidden inline-flex items-center justify-center text-xl w-11 h-11 rounded-xl bg-white/40 dark:bg-white/10"
+                className="md:hidden inline-flex items-center justify-center text-xl w-11 h-11 rounded-xl bg-blue-50/50 dark:bg-white/10"
                 aria-label="Ouvrir le menu"
                 aria-expanded={open}
               >
@@ -87,7 +87,7 @@ export default function Navbar() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -16, opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="absolute top-[72px] left-4 right-4 rounded-2xl bg-white/85 dark:bg-gray-900/75 backdrop-blur-xl shadow-2xl p-4"
+              className="absolute top-[72px] left-4 right-4 rounded-2xl bg-white/80 dark:bg-gray-900/75 backdrop-blur-xl shadow-2xl border border-blue-100/30 dark:border-transparent p-4"
             >
               <ul className="flex flex-col gap-2 list-none m-0 p-0">
                 {links.map((link) => (

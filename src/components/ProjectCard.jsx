@@ -16,9 +16,10 @@ export default function ProjectCard({ slug, title, description, tech }) {
         group relative overflow-hidden
         flex flex-col
         rounded-3xl p-7
-        bg-white/70 dark:bg-white/10
+        bg-white/50 dark:bg-white/10
         shadow-2xl
         backdrop-blur-xl
+        border border-blue-100/30 dark:border-transparent
         transition
       "
     >
@@ -37,7 +38,7 @@ export default function ProjectCard({ slug, title, description, tech }) {
           <ProjectBadge key={`${slug}-tech-${t}-${i}`} name={t} />
         ))}
         {techList.length > 6 && (
-          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-black/5 dark:bg-white/10 text-slate-700 dark:text-slate-200">
+          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-50 dark:bg-white/10 text-slate-600 dark:text-slate-200">
             +{techList.length - 6}
           </span>
         )}

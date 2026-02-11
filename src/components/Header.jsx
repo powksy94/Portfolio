@@ -9,7 +9,7 @@ export default function Header() {
     <header className="relative">
       {/* Bande “glass” pour lisibilité sur le background animé */}
       <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-        <div className="rounded-3xl bg-white/80 dark:bg-black/40 backdrop-blur-xl shadow-xl px-6 sm:px-10 py-16">
+        <div className="rounded-3xl bg-white/50 dark:bg-black/40 backdrop-blur-xl shadow-xl border border-blue-100/40 dark:border-transparent px-6 sm:px-10 py-16">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 text-lg text-slate-700 dark:text-slate-300"
+            className="mt-6 text-lg text-slate-600 dark:text-slate-300"
           >
             Développeur Fullstack
           </motion.p>
@@ -45,7 +45,7 @@ export default function Header() {
             {/* ✅ Contact = vraie page */}
             <Link
               to="/contact"
-              className="px-10 py-4 rounded-xl border border-black/10 dark:border-white/15 bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition text-slate-900 dark:text-white"
+              className="px-10 py-4 rounded-xl border border-blue-200/50 dark:border-white/15 bg-blue-50/50 dark:bg-white/5 hover:bg-blue-100/60 dark:hover:bg-white/10 transition text-slate-800 dark:text-white"
             >
               Me contacter
             </Link>

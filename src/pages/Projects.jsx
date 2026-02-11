@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <PageWrapper>
       <div className="max-w-6xl mx-auto py-24 px-6">
-        <div className="rounded-3xl bg-white/80 dark:bg-black/40 backdrop-blur-xl shadow-xl p-10">
+        <div className="rounded-3xl bg-white/50 dark:bg-black/40 backdrop-blur-xl shadow-xl border border-blue-100/40 dark:border-transparent p-10">
         <h1 className="text-5xl font-extrabold text-center mb-16 text-slate-900 dark:text-white">
           Mes Projets
         </h1>
