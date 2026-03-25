@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, percent } from "framer-motion";
 import Badge from "../components/Badge";
 
 const skillsCategories = [
@@ -12,6 +12,7 @@ const skillsCategories = [
       { name: "HTML/CSS", percent: 60 },
       { name: "C#", percent: 40 },
       { name: "Flutter", percent: 50 },
+      { name: "TypeScript", percent: 30},
     ],
   },
   {
@@ -53,6 +54,7 @@ const skillsCategories = [
       { name: "SQLite", percent: 40 },
       { name: "MongoDB", percent: 35 },
       { name: "Prisma", percent: 20 },
+      { name: "PostgreSQL", percent: 35},
     ],
   },
 ];

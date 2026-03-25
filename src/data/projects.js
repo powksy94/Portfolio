@@ -196,6 +196,59 @@ export const projects = [
     ],
   },
   {
+    slug: "dating-app",
+    title: "Dating App",
+    description:
+      "Application mobile de rencontre développée avec Flutter",
+    tech: "Flutter, Dart, C++, Swift",
+    externalLink: "https://github.com/powksy94/dating_app",
+    languages: [
+      { name: "Dart", percent: 64.5 },
+      { name: "C++", percent: 18.2 },
+      { name: "CMake", percent: 13.4 },
+      { name: "Swift", percent: 2.0 },
+      { name: "C", percent: 1.0 },
+      { name: "HTML", percent: 0.8 },
+    ],
+    content: [
+      "Développement d'une application mobile de rencontre multiplateforme avec Flutter",
+      "Architecture Flutter en Dart avec intégration de composants natifs (C++, Swift)",
+      "Fonctionnalités principales :",
+      {
+        type: "list",
+        items: [
+          "Interface de profils utilisateurs avec navigation fluide",
+          "Système de matching entre utilisateurs",
+          "Gestion des interactions (likes, refus) avec animations",
+          "Navigation entre les sections de l'application",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "dating-app-backend",
+    title: "API Backend pour Dating App",
+    description:
+      "Backend TypeScript/Node.js supportant l'application Dating App",
+    tech: "TypeScript, Node.js",
+    externalLink: "https://github.com/powksy94/dating_app_backend",
+    languages: [{ name: "TypeScript", percent: 100 }],
+    content: [
+      "Création d'un backend Node.js entièrement typé en TypeScript pour la Dating App",
+      "Serveur Express avec architecture modulaire dans un dossier /src",
+      "Fonctionnalités principales :",
+      {
+        type: "list",
+        items: [
+          "Point d'entrée server.ts avec configuration des routes et middlewares",
+          "API RESTful pour la gestion des utilisateurs et des matchs",
+          "Typage strict TypeScript pour la fiabilité et la maintenabilité",
+          "Structure claire séparant logique métier, routes et modèles",
+        ],
+      },
+    ],
+  },
+  {
     slug: "cobol-test-transaction",
     title: "Gestion de Transactions COBOL",
     description:
